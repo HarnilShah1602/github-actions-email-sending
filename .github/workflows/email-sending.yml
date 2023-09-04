@@ -2,8 +2,10 @@ name: email_sending
 
 on:
   push:
-    branches: main
-    - cron: "*/5 * * * *"
+    branches:
+      - main
+  #schedule:
+   # - cron: "*/5 * * * *"
 
   workflow_dispatch:
 
