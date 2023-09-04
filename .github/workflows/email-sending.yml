@@ -1,7 +1,8 @@
 name: email_sending
 
 on:
-  schedule:
+  push:
+    branches: main
     - cron: "*/5 * * * *"
 
   workflow_dispatch:
