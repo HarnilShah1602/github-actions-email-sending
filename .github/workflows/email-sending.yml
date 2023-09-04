@@ -17,8 +17,18 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - name: Send email
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1  # Replace with your AWS region
+
+      - name: Deploy to Lambda
+        run: |
+          # Add your deployment script or commands here
+          # For example, use the AWS CLI or AWS SDK to deploy your Lambda function
         env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-        run: python email-sending.py
+          AWS_LAMBDA_FUNCTION_NAME: Email-sender  # Replace with your Lambda function name
+      
+
